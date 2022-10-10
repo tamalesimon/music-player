@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.song-container {
+    min-height: 60vh;
+    
+}
+.player {
+    min-height: 20vh;
+    align-items: center;
+}
+.time-control {
+    width: 50%;
+}
+input {
+    width: 100%;
+}
+p{
+    padding: 1rem;
+}
+.player-control {
+ width: 30%;
+}
+.control {
+    cursor: pointer;
+}
