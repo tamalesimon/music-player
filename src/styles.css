@@ -6,7 +6,7 @@
 }
 .song-container {
     min-height: 60vh;
-    
+
 }
 .player {
     min-height: 20vh;
@@ -20,6 +20,7 @@ input {
 }
 p{
     padding: 1rem;
+    text-align: center;
 }
 .player-control {
  width: 30%;
