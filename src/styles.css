@@ -1,16 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Space+Mono&display=swap');
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+body h3, h4 {
+    font-weight: 400;
+}
+
+h3{
+    font-size: 1rem;
+}
+h4{
+    font-size: 0.8rem;
+}
 .song-container {
     min-height: 60vh;
 
 }
+.song-container img{
+    width:20%;
+    border-radius: 50%;
+}
+.song-container h2 {
+    padding: 3rem 1rem 1rem 1rem;
+}
+.song-container h3 {
+    font-size: 1rem;
+}
 .player {
     min-height: 20vh;
     align-items: center;
+}
+.naviga {
+    min-height:10vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.naviga button{
+    background: transparent;
+    border: 2px solid #B04E50;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+    color:#B04E50
+}
+.naviga button:hover{
+    background: #B04E50;
+    color: white;
 }
 .time-control {
     width: 50%;
@@ -28,3 +70,109 @@ p{
 .control {
     cursor: pointer;
 }
+
+.library{
+    height: 100%;
+    overflow: scroll;
+    width: 20rem;
+    top: 0;
+    left: 0;
+    position: fixed;
+    transition: all 0.5s ease;
+    transform:translateX(-100%)
+}
+
+.library h2{
+    padding: 2rem   ;
+}
+
+.library-song {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem 2rem 1rem 2rem;
+    cursor: pointer;
+}
+.library-song :hover {
+    background-color: rgba(0,0,0,0.2);
+}
+
+.library-song img {
+    width:30%;
+}
+
+.song-details{
+    padding-left: 1rem;
+}
+.song-details h3{
+    font-size: 1rem;
+}
+.song-details h4{
+    font-size: 0.8rem;
+}
+* {
+    scrollbar-width:thin;
+    scrollbar-color: #B04E50 #0d0d0d;
+}
+*::-webkit-scrollbar {
+    width: 2px;
+}
+*::-webkit-scrollbar-track{
+    background:transparent;
+}
+*::-webkit-scrollbar-thumb{
+    background-color:#B04E50;
+    border-radius: 20px;
+    border:transparent;
+}
+/*
+.library h2 {
+    padding: 2rem;
+}
+
+.library-song {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem 1rem 2rem;
+}
+
+.library-song-details {
+    padding:0  0 2rem;
+}
+
+.library-song img{
+ width:40%
+}
+.library-song-details h3, h4 {
+    font-weight: 400;
+}
+.library-song-details h3 {
+    font-size: 1rem;
+}
+.library-song-details h4 {
+    font-size: 0.7rem;
+}
+
+.library-song-details .song-details {
+    padding: 1rem;
+}
+
+* {
+    scrollbar-width:thin;
+    scrollbar-color: #B04E50 #0d0d0d;
+}
+*::-webkit-scrollbar {
+    width: 2px;
+}
+*::-webkit-scrollbar-track{
+    background:transparent;
+}
+*::-webkit-scrollbar-thumb{
+    background-color:#B04E50;
+    border-radius: 20px;
+    border:transparent;
+}
+
+.library-song :hover {
+    background-color:#db8889
+} */

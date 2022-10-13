@@ -1,25 +1,37 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Music } from './get-music.service';
+
+export interface Music {
+  name: string;
+  cover: string;
+  artist: string;
+  audio: string;
+  color: [string, string];
+  id: number;
+  active: boolean;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class MusicService {
   private allMusic = new BehaviorSubject<Music[]>([]);
+  public musicUrl: string = '/assets/my-music.json';
 
-  constructor(@Inject(String) private url: string, private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   public init(): void {
     this.http
-      .get<Music[]>(this.url)
+      .get<Music[]>(this.musicUrl)
         .subscribe((music) => {
           this.allMusic.next(music);
         });
   }
 
   public getMusic(): Observable<Music[]> {
-    return this.allMusic.asObservable();
+    return this.allMusic;
   }
+
+  //how to get an item from an array object using id in angular 8?
 }
