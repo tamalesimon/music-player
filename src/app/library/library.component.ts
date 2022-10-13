@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Music, MusicService } from '../services/music.service';
@@ -11,6 +11,7 @@ import { Music, MusicService } from '../services/music.service';
 export class LibraryComponent implements OnInit {
   public allMusic!: Observable<Music[]>;
   songs: any[] = [];
+  
 
   constructor(
     private musicService: MusicService,

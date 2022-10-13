@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface Music {
@@ -19,6 +19,9 @@ export class MusicService {
   private allMusic = new BehaviorSubject<Music[]>([]);
   public musicUrl: string = '/assets/my-music.json';
 
+  @Input()
+  showPlayList: boolean = false;
+
   constructor(private http: HttpClient) { }
 
   public init(): void {
@@ -33,5 +36,8 @@ export class MusicService {
     return this.allMusic;
   }
 
-  //how to get an item from an array object using id in angular 8?
+  showLibrary() {
+    this.showPlayList = !this.showPlayList;
+  }
+
 }
