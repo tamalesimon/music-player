@@ -11,7 +11,18 @@ import { Music, MusicService } from '../services/music.service';
 export class LibraryComponent implements OnInit {
   public allMusic!: Observable<Music[]>;
   songs: any[] = [];
-  
+  isLibraryOpen = false;
+
+  @Input()
+  set event(event: Event){
+    if(event) {
+      this.toggle();
+    }
+  }
+
+  toggle(){
+    this.isLibraryOpen = !this.isLibraryOpen;
+  }
 
   constructor(
     private musicService: MusicService,

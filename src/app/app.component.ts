@@ -7,10 +7,9 @@ import { Component, Input } from '@angular/core';
 })
 export class AppComponent {
   title = 'music-player';
+  event!: Event;
 
-  @Input() isLibraryOpen = false;
-
-  toggleLibrary(){
-    alert(this.isLibraryOpen)
+  onChange(event:Event) {
+    this.event = event;
   }
 }

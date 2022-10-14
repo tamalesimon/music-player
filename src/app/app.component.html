@@ -1,4 +1,4 @@
-<app-nav></app-nav>
+<app-nav (clickEvent)="onChange($event)"></app-nav>
 <app-song></app-song>
 <app-player></app-player>
-<app-library></app-library>
+<app-library [event]="event"></app-library>

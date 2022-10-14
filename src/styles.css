@@ -79,8 +79,6 @@ p{
     left: 0;
     position: fixed;
     transition: all 0.5s ease;
-    transform:translateX(-100%);
-    opacity: 0;
 }
 
 .library h2{

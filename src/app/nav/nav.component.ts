@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-nav',
@@ -6,17 +6,15 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-
+  @Output() clickEvent: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  @Input() isLibraryOpen = false;
-
-  toggleLibrary(): void {
-    this.isLibraryOpen = !this.isLibraryOpen;
+  onClick(){
+    this.clickEvent.emit(event)
   }
 
 }
