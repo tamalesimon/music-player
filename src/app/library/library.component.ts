@@ -34,7 +34,6 @@ export class LibraryComponent implements OnInit {
     this.allMusic.subscribe({
       next: (songs) => {
         this.songs = songs as any;
-        console.table(this.songs)
       }
     })
     this.musicService.init();
