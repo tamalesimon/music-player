@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Input } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 
 export interface Music {
   name: string;
@@ -18,6 +18,7 @@ export interface Music {
 export class MusicService {
   private allMusic = new BehaviorSubject<Music[]>([]);
   public musicUrl: string = '/assets/my-music.json';
+  public activeSong: any;
 
   @Input()
   showPlayList: boolean = false;
@@ -38,6 +39,14 @@ export class MusicService {
 
   showLibrary() {
     this.showPlayList = !this.showPlayList;
+  }
+
+  public getSongById(id: number): Observable<Music> {
+    return this.getMusic().pipe(
+      map((music: any[]) => {
+        return music.find((song: { id: number; }) => song.id === id);
+      })
+    );
   }
 
 }

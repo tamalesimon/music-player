@@ -11,7 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 export class SongComponent implements OnInit {
 
   constructor(
-    ) { }
+    public musicService: MusicService,
+  ) { }
 
   ngOnInit(): void {
   }

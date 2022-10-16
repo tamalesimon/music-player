@@ -3,7 +3,7 @@
     <h2>Library</h2>
     <div class="library-song align-items-center"
         *ngFor="let song of songs">
-        <div class="d-flex" >
+        <div class="d-flex" (click)="getSong(song.id)" >
                 <img src="{{song.cover}}" alt="{{song.name}}">
                 <div class="song-details align-self-center">
                     <h3>{{song.name}}</h3>
