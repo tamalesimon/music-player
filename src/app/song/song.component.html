@@ -1,5 +1,6 @@
-<div class="song-container d-flex flex-column align-items-center justify-content-center">
-    <img alt="image song art" src="https://chillhop.com/wp-content/uploads/2022/02/6b1cd792e2d88c65108a3c3b7ed48407b6f65bf8-1024x1024.jpg"/>
-    <h2 class="fw-bold">Everyday</h2>
-    <h3 class="fw-bold">Aves</h3>
+<div class="App song-container d-flex flex-column align-items-center justify-content-center"
+    [ngClass]="{'library-active': isLibraryOpen, '':!isLibraryOpen}">
+    <img alt="image song art" src={{musicService.activeSong?.cover}}/>
+    <h2 class="fw-bold" value="Test name">{{musicService.activeSong?.name ? (musicService.activeSong?.name) : "Everyday"}}</h2>
+    <h3 class="fw-bold">{{musicService.activeSong?.artist ? (musicService.activeSong?.artist):"Aves"}}</h3>
 </div>

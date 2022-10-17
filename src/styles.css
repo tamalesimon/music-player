@@ -38,17 +38,21 @@ h4{
     align-items: center;
 }
 .naviga {
+    padding-top: 1.7rem;
     min-height:10vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-bottom:2rem;
 }
 .naviga button{
     background: transparent;
     border: 2px solid #B04E50;
     padding: 0.5rem;
     transition: all 0.3s ease;
-    color:#B04E50
+    color:#B04E50;
+    z-index: 10;
+    
 }
 .naviga button:hover{
     background: #B04E50;
@@ -79,6 +83,7 @@ p{
     left: 0;
     position: fixed;
     transition: all 0.5s ease;
+    background-color: white;
 }
 
 .library h2{
@@ -125,6 +130,14 @@ p{
     border:transparent;
 }
 
+.App {
+    transition: all 0.5s ease;
+}
+
+.library-active {
+    margin-left:15%;
+}
+
 .show-playlist {
     transform: translateX(0);
     opacity: 1;
@@ -132,4 +145,35 @@ p{
 .hide-playlist {
     transform:translateX(-100%);
     opacity: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .library{
+        width: 100%;
+    }
+    .song-container img{
+        width: 60%;
+    }
+    .song-container h2 {
+        padding: 1rem;
+    }
+    .player {
+        min-height: 30vh;
+    }
+    .naviga {
+        padding-top: 1.7rem;
+        min-height: 5vh;
+    }
+    .naviga button{
+        z-index: 10;
+    }
+    .time-control {
+        width: 100%;
+    }
+    .player-control {
+        width: 50%;
+    }
+    .control {
+        cursor: pointer;
+    }
 }

@@ -39,4 +39,13 @@ export class LibraryComponent implements OnInit {
     this.musicService.init();
   }
 
+  getSong(id: number) {
+    this.musicService.getSongById(id).subscribe({
+      next: (song) => {
+        this.musicService.activeSong = song;
+        console.log(this.musicService.activeSong)
+      }
+    })
+  }
+
 }
