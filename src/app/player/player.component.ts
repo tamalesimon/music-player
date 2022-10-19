@@ -8,7 +8,7 @@ import { MusicService } from '../services/music.service';
 })
 export class PlayerComponent implements OnInit {
   isLibraryOpen = false;
-  songST: any = "00:00:00";
+  songST: any = "00:00";
   songET: any;
 
   @Input()
