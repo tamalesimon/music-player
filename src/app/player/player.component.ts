@@ -35,8 +35,6 @@ export class PlayerComponent implements OnInit {
     this.musicService.player.addEventListener('timeupdate', () => {
       this.songST = this.musicService.getStartTime();
       this.songET = this.musicService.getEndTime();
-
-      console.log(this.songST);
       console.log(this.songET);
     })
   }
