@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Input } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
+import * as moment from 'moment';
 
 export interface Music {
   name: string;
@@ -45,6 +46,11 @@ export class MusicService {
     this.isPlaying = !this.isPlaying;
   }
 
+  formatTime(time: number, format: string = 'HH:mm:ss') {
+    const momentTime = time * 1000;
+    return moment.utc(momentTime).format(format);
+  }
+
   public getSongById(id: number): Observable<Music> {
     return this.getMusic().pipe(
       map((music: any[]) => {
@@ -63,6 +69,42 @@ export class MusicService {
       this.player.play();
     }
   }
+
+  public getStartTime() {
+    return this.formatTime(this.player.currentTime);
+  }
+
+  public getEndTime() {
+    return this.getSongById(this.activeSong.id).subscribe((song) => {
+      return this.formatTime(this.player.duration);
+    })
+  }
+
+  public playNext(){
+    let currentSong = this.activeSong.id;
+    let totalSongs = this.allMusic.value.length;
+    if(currentSong < totalSongs){
+      this.getSongById(currentSong + 1).subscribe((song) => {
+        this.activeSong = song;
+        this.playSong(song.audio);
+      });
+    } else {
+      this.getSongById(currentSong).subscribe((song) => {
+        this.activeSong = song;
+        this.playSong(song.audio);
+      });
+    }
+  }
+
+  public playPrevious() {
+    let currentSong = this.activeSong.id;
+    if(currentSong > 1){
+      this.getSongById(currentSong - 1).subscribe((song) => {
+        this.activeSong = song;
+        this.playSong(song.audio);
+      });
+  }
+}
 
   public pauseSong(audioSrc: string) {
     let audio = new Audio(audioSrc);

@@ -1,14 +1,14 @@
 <div class="player App d-flex flex-column"
 [ngClass]="{'library-active': isLibraryOpen, '':!isLibraryOpen}">
     <div class="d-flex flex-row time-control items-center">
-        <p>Start Time</p>
+        <p>{{songST}}</p>
         <input type="range"/>
-        <p>Stop Time</p>
+        <p>{{songET}}</p>
     </div>
     <div class="player-control d-flex flex-row justify-content-between align-items-center">
-        <h2><i class="bi bi-rewind control"></i></h2>
+        <h2 (click)="playPreviousSong()"><i class="bi bi-rewind control"></i></h2>
         <h2 (click)="playSound()" *ngIf="musicService.isPlaying === false"><i class="bi bi-play control"></i></h2>
         <h2 (click)="playSound()" *ngIf="musicService.isPlaying === true"><i class="bi bi-pause control"></i></h2>
-        <h2><i class="bi bi-fast-forward control"></i></h2>
+        <h2 (click)="playNextSong()"><i class="bi bi-fast-forward control"></i></h2>
     </div>
 </div>
