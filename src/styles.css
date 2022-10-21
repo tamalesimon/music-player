@@ -52,7 +52,7 @@ h4{
     transition: all 0.3s ease;
     color:#B04E50;
     z-index: 10;
-    
+
 }
 .naviga button:hover{
     background: #B04E50;
@@ -69,7 +69,8 @@ p{
     text-align: center;
 }
 .player-control {
- width: 30%;
+  margin-top:1rem;
+  width: 30%;
 }
 .control {
     cursor: pointer;

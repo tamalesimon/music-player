@@ -46,9 +46,13 @@ export class MusicService {
     this.isPlaying = !this.isPlaying;
   }
 
-  formatTime(time: number, format: string = 'mm:ss') {
-    const momentTime = time * 1000;
-    return moment.utc(momentTime).format(format);
+  // formatTime(time: number, format: string = 'mm:ss') {
+  //   const momentTime = time * 1000;
+  //   return moment.utc(momentTime).format(format);
+  // }
+
+  formatTime(time: any) {
+    return Math.floor(time/60) + ':' + ('0' + Math.floor(time%60)).slice(-2);
   }
 
   public getSongById(id: number): Observable<Music> {
@@ -75,9 +79,11 @@ export class MusicService {
   }
 
   public getEndTime() {
-    return this.getSongById(this.activeSong.id).subscribe((song) => {
+   if (this.isPlaying) {
       return this.formatTime(this.player.duration);
-    })
+   } else {
+     return '0:00';
+   }
   }
 
   public playNext(){
@@ -106,10 +112,16 @@ export class MusicService {
   }
 }
 
-  public pauseSong(audioSrc: string) {
-    let audio = new Audio(audioSrc);
-    audio.pause();
+  public pauseSong() {
+    if(this.isPlaying) {
+      this.player.pause();
+      this.changeIsPlaying();
+    } else {
+      this.player.play();
+    }
   }
+
+
 
   public nextSong(audio: string) {
     this.activeSong.next(audio);
@@ -117,5 +129,9 @@ export class MusicService {
 
   public prevSong(audio: string) {
     this.activeSong.prev(audio);
+  }
+
+  seekTo(seconds: any) {
+    this.player.currentTime = seconds;
   }
 }

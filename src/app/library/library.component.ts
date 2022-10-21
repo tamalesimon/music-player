@@ -45,7 +45,6 @@ export class LibraryComponent implements OnInit {
         this.musicService.activeSong = song;
         if(this.musicService.isPlaying === true) {
           this.musicService.playSong(song.audio);
-          console.log(this.musicService.activeSong)
         }
       }
     })

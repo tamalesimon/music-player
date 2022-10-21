@@ -27,6 +27,7 @@ export class SongComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // TODO document why this method 'ngOnInit' is empty
   }
 
 

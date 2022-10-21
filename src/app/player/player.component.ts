@@ -8,8 +8,8 @@ import { MusicService } from '../services/music.service';
 })
 export class PlayerComponent implements OnInit {
   isLibraryOpen = false;
-  songST: any = "00:00";
-  songET: any;
+  songST: any = '0:00';
+  songET: any = '0:00';
 
   @Input()
   set event(event: Event){
@@ -28,15 +28,20 @@ export class PlayerComponent implements OnInit {
 
   ngOnInit(): void {
     // TODO document why this method 'ngOnInit' is empty
+
   }
 
   playSound(){
     this.musicService.playSong(this.musicService.activeSong.audio);
     this.musicService.player.addEventListener('timeupdate', () => {
       this.songST = this.musicService.getStartTime();
-      this.songET = this.musicService.getEndTime();
-      console.log(this.songET);
+      this.songET = this.musicService?.getEndTime();
+
     })
+  }
+
+  pause() {
+    this.musicService.pauseSong();
   }
 
   playNextSong(){
@@ -49,7 +54,11 @@ export class PlayerComponent implements OnInit {
 
   startMusic(){
     this.musicService.getStartTime()
-  
+
+  }
+
+  onSliderChange(event: Event) {
+    return this.musicService.seekTo(event);
   }
 
 }
